@@ -26,4 +26,5 @@
 	<SubTexture name="note splash red 10003" x="349" y="788" width="169" height="150" frameX="-49" frameY="-60" frameWidth="274" frameHeight="277"/>
 	<SubTexture name="note splash red 10004" x="826" y="525" width="186" height="173" frameX="-38" frameY="-49" frameWidth="274" frameHeight="277"/>
 	<SubTexture name="note splash red 10005" x="196" y="279" width="196" height="176" frameX="-34" frameY="-49" frameWidth="274" frameHeight="277"/>
+	
 </TextureAtlas>
