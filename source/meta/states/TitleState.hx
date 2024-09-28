@@ -336,11 +336,8 @@ class TitleState extends MusicBeatState
 		ngSpr.antialiasing = ClientPrefs.globalAntialiasing;
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
-
-		if (initialized)
-			skipIntro();
-		else
-			initialized = true;
+		initialized = true;
+		skipIntro();
 
 		// credGroup.add(credTextShit);
 	}
@@ -426,7 +423,8 @@ class TitleState extends MusicBeatState
 				if(titleText != null) titleText.animation.play('press');
 
 				FlxG.camera.flash(ClientPrefs.flashing ? FlxColor.WHITE : 0x4CFFFFFF, 1);
-				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+				FlxG.sound.play(Paths.sound('menulaugh'), 0.7);
+				FlxG.sound.play(Paths.sound('menumomentclick'), 0.5);
 
 				transitioning = true;
 				// FlxG.sound.music.stop();
