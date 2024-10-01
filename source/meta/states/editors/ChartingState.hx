@@ -110,6 +110,8 @@ class ChartingState extends MusicBeatState
 		['Set Cam Pos', "Value 1: X\nValue 2: Y"],
 		["Mult SV", "Changes the notes' scroll velocity via multiplication.\nValue 1: Multiplier"],
         ["Constant SV", "Uses scroll velocity to set the speed to a constant number.\nValue 1: Constant"],
+		['static', "ok so an update on my test i think that uhhhhhhh i should redo it because\nmy final grade rn is like a 75-80 so id want it to raise it higher if it doesnt already"],
+		['RedVG', "hi guys i just finished a math test, i got a 85"]
 	];
 
 	public var variables:Map<String, Dynamic> = new Map();

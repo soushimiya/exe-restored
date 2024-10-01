@@ -562,8 +562,8 @@ class PlayState extends MusicBeatState
 		healthLoss = ClientPrefs.getGameplaySetting('healthloss', 1);
 		instakillOnMiss = ClientPrefs.getGameplaySetting('instakill', false);
 		practiceMode = ClientPrefs.getGameplaySetting('practice', false);
-		cpuControlled = false; //ClientPrefs.getGameplaySetting('botplay', false);
-        // ^^ i dont think theres a way to toggle cpucontrolled in menus????? so im doing this
+		cpuControlled = ClientPrefs.getGameplaySetting('botplay', false);
+
 
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
@@ -1195,8 +1195,8 @@ class PlayState extends MusicBeatState
 		timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), this,
 			'songPercent', 0, 1);
 		timeBar.scrollFactor.set();
-		timeBar.createFilledBar(0xFF000000, 0xFFFFFFFF);
-		timeBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
+		timeBar.createFilledBar(0xFF000000, 0xFFFF0000);
+		timeBar.numDivisions = 200; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
 		timeBar.alpha = 0;
 		timeBar.visible = showTime;
 		add(timeBar);
@@ -4247,6 +4247,31 @@ class PlayState extends MusicBeatState
 				} else {
 					Reflect.setProperty(this, value1, value2);
 				}
+			case 'static':
+				var daStatic:FlxSprite;
+				daStatic = new FlxSprite(0, 0).loadGraphic(Paths.image("daSTAT"));
+				daStatic.frames = Paths.getSparrowAtlas('daSTAT');
+				daStatic.setGraphicSize(FlxG.width, FlxG.height);
+				daStatic.screenCenter();
+				daStatic.cameras = [camHUD];
+				daStatic.animation.addByPrefix('static', 'staticFLASH', 24, false);
+				add(daStatic);
+				daStatic.alpha = 0.5;
+
+				FlxG.sound.play(Paths.sound('staticBUZZ'));
+				daStatic.animation.play('static');
+
+				daStatic.animation.finishCallback = function(pog:String)
+				{
+					remove(daStatic);
+				}
+			case 'RedVG':
+				// ty maliciousbunny, i stole this from you but eh you wrote it in v2 so its fiiiiiiiiiiiine
+				var vg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('RedVG'));
+				vg.alpha = 0;
+				vg.cameras = [camHUD];
+				add(vg);
+				FlxTween.tween(vg, {alpha: 1}, 0.85, {type: FlxTweenType.PINGPONG});
 		}
 
 		callOnScripts('onEvent', [eventName, value1, value2]);
