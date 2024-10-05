@@ -49,11 +49,11 @@ class FunkinIris extends FunkinScript
     {
         //for now we are just rebinding em to nothing //will do proper logging later
         Iris.error = (x,?pos)->{
-			trace('ERROR: [${pos.fileName}]: LINE: ${pos.lineNumber}->$x')
+			trace('ERROR: [${pos.fileName}]: LINE: ${pos.lineNumber}->$x');
 		}
        	// Iris.warn = (x,?pos)->{}
         Iris.fatal = (x,?pos)->{
-			trace('FATAL ERROR: [${pos.fileName}]: LINE: ${pos.lineNumber}->$x')
+			trace('FATAL ERROR: [${pos.fileName}]: LINE: ${pos.lineNumber}->$x');
 		}
 
 		//quick test
